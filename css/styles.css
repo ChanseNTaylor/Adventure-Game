@@ -1,0 +1,128 @@
+html, body
+{
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    color: white;
+    font-size: 1.15vw;
+    background: black;
+    font-family: Courier New;
+}
+.content
+{
+    margin: 0 auto;
+    max-width: 85vw;
+    padding-top: 1.5vh;
+}
+.input
+{
+    width: 100%;
+    height: 20px;
+    border: none;
+    color: white;
+    font-size: 1vw;
+    background: transparent;
+}
+.textDiv
+{
+    height: 65vh;
+    max-width: 80%;
+    overflow-x: hidden;
+}
+.footer
+{
+    font-size: 0.75vw;
+    margin-top: 0.5vh;
+    text-align: center;
+    padding-top: 0.5vh;
+    border-top: 1px dotted white;
+}
+.header
+{
+    font-size: 1vw;
+    margin-bottom: 1vh;
+}
+.header__topRow
+{
+    display: flex;
+    justify-content: space-between;
+}
+.header__bottomRow
+{
+    display: flex;
+    justify-content: space-between;
+}
+.textDiv__response
+{
+    white-space: pre-line;
+}
+.inputDiv
+{
+    display: flex;
+}
+.inputDiv::before
+{
+    content: '>';
+    font-size: 1vw;
+}
+.textDiv__message, .textDiv__response
+{
+    margin-top: 0;
+}
+.textDiv__input
+{
+    margin: 0;
+}
+.centerDiv
+{
+    display: flex;
+    justify-content: space-between;
+}
+.sidebarDiv
+{
+    display: flex;
+    margin-left: 0.5%;
+    flex-direction: column;
+}
+.inventoryDiv
+{
+    width: 100%;
+    height: 100%;
+}
+.inventoryItem
+{
+    width: 100%;
+    margin: 3px 0;
+    display: inline-block;
+    background-color: rgba(100, 100, 100, 0.5);
+}
+.inventoryItem:hover
+{
+    width: 100%;
+    margin: 3px 0;
+    display: inline-block;
+    background-color: rgba(100, 100, 100, 0.85);
+}
+canvas
+{
+    width: 100%;
+    height: 100%;
+    border: 1px solid white;
+}
+
+@media only screen and (max-width: 400px)
+{
+    .header
+    {
+        font-size: 3.25vw;
+    }
+    .content
+    {
+        max-width: 95vw;
+        font-size: 3.5vw;
+    }
+    .footer
+    {
+        font-size: 2.5vw;
+    }
+}
