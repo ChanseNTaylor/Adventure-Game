@@ -1,53 +1,39 @@
 html, body
 {
-    margin: 0;
-    width: 100%;
     height: 100%;
+}
+.wrapper
+{
     color: white;
-    font-size: 1.15vw;
+    height: auto;
+    padding: 1.75vw;
+    min-height: 100%;
     background: black;
+    font-size: 4.5vw;
     font-family: Courier New;
 }
 .content
 {
-    margin: 0 auto;
-    max-width: 85vw;
-    padding-top: 1.5vh;
+    padding-top: 2vh;
 }
 .input
 {
-    width: 100%;
-    height: 20px;
     border: none;
     color: white;
-    font-size: 1vw;
     background: transparent;
 }
 .textDiv
 {
     height: 65vh;
-    max-width: 80%;
     overflow-x: hidden;
 }
 .footer
 {
-    font-size: 0.75vw;
-    margin-top: 0.5vh;
-    text-align: center;
-    padding-top: 0.5vh;
+    font-size: 3.25vw;
+    margin-top: 0.25vh;
     border-top: 1px dotted white;
 }
-.header
-{
-    font-size: 1vw;
-    margin-bottom: 1vh;
-}
-.header__topRow
-{
-    display: flex;
-    justify-content: space-between;
-}
-.header__bottomRow
+.header__top-row
 {
     display: flex;
     justify-content: space-between;
@@ -56,33 +42,14 @@ html, body
 {
     white-space: pre-line;
 }
-.inputDiv
-{
-    display: flex;
-}
-.inputDiv::before
-{
-    content: '>';
-    font-size: 1vw;
-}
 .textDiv__message, .textDiv__response
 {
     margin-top: 0;
 }
-.textDiv__input
-{
-    margin: 0;
-}
-.centerDiv
-{
-    display: flex;
-    justify-content: space-between;
-}
 .sidebarDiv
 {
     display: flex;
-    margin-left: 0.5%;
-    flex-direction: column;
+    flex-direction: row;
 }
 .inventoryDiv
 {
@@ -110,19 +77,22 @@ canvas
     border: 1px solid white;
 }
 
-@media only screen and (max-width: 400px)
+/* Generic Classes */
+.center
 {
-    .header
-    {
-        font-size: 3.25vw;
-    }
-    .content
-    {
-        max-width: 95vw;
-        font-size: 3.5vw;
-    }
-    .footer
-    {
-        font-size: 2.5vw;
-    }
+    margin: 0 auto;
 }
+.center-text
+{
+    text-align: center;
+}
+.no-margin
+{
+    margin: 0;
+}
+.no-padding
+{
+    padding: 0;
+}
+
+/* Media Query Breakpoints */
