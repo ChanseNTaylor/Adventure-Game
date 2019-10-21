@@ -38,6 +38,10 @@ html, body
     display: flex;
     justify-content: space-between;
 }
+.textDiv__title
+{
+    font-weight: bold;
+}
 .textDiv__response
 {
     white-space: pre-line;
