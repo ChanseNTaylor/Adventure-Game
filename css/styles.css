@@ -29,7 +29,7 @@ html, body
 }
 .footer
 {
-    font-size: 3.25vw;
+    font-size: 3vw;
     margin-top: 0.25vh;
     border-top: 1px dotted white;
 }
@@ -49,6 +49,10 @@ html, body
 .textDiv__message, .textDiv__response
 {
     margin-top: 0;
+}
+.textDiv__input
+{
+    font-weight: bold;
 }
 .sidebarDiv
 {
