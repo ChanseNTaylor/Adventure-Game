@@ -14,12 +14,19 @@ const UI = function()
     {
         if(evt.key == "Enter")
         {
-            parseUserInput(input.value);
+            const response = parseUserInput(input.value);
+
             addInputText(`>${input.value}`);
-            
+            addResponseText(response);
+
             input.value = "";
         }
     });
+
+    const parseUserInput = userInput =>
+    {
+        return "Command not recognized";
+    };
 
     const addTitleText = text =>
     {
@@ -29,7 +36,7 @@ const UI = function()
         newParagraph.classList.add("textDiv__title");
 
         textDiv.appendChild(newParagraph);
-    }
+    };
 
     const addSubtitleText = text =>
     {
@@ -39,7 +46,7 @@ const UI = function()
         newParagraph.classList.add("textDiv__message");
 
         textDiv.appendChild(newParagraph);
-    }
+    };
 
     const addInputText = text =>
     {
@@ -49,9 +56,17 @@ const UI = function()
         newSpan.classList.add("textDiv__input");
 
         textDiv.appendChild(newSpan);
-    }
+    };
 
-    const addResponseText = () => {};
+    const addResponseText = text =>
+    {
+        const newParagraph = document.createElement("P");
+
+        newParagraph.appendChild(document.createTextNode(text));
+        newParagraph.classList.add("textDiv__message");
+
+        textDiv.appendChild(newParagraph);
+    };
 
     return {
         addTitleText: addTitleText,
@@ -62,3 +77,5 @@ const UI = function()
         setLocation(place) { location.innerHTML = place }
     }
 }
+
+// addResponseText and addSubtitleText are basically the same thing... Must fix.

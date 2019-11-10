@@ -2,7 +2,7 @@
 const Game = (function()
 {
     const GAME_TITLE = "This Game Has No Title Yet";
-    const GAME_SUBTITLE = "I'll come up with something good later.  "
+    const GAME_SUBTITLE = "I'll come up with something good later."
 
     const ui = new UI();
     const map = new Map();
