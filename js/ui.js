@@ -25,7 +25,16 @@ const UI = function()
 
     const parseUserInput = userInput =>
     {
-        return "Command not recognized";
+        userInput = userInput.toLowerCase();
+
+        if(["hi", "hello", "hey", "howdy"].includes(userInput))
+        {
+            const responses = ["Hello.", "Goodbye.", "Howdy.", "Good day."];
+
+            return responses[Math.floor(Math.random() * responses.length)];
+        }
+
+        return `Command '${userInput}' not recognized`;
     };
 
     const addTitleText = text =>
