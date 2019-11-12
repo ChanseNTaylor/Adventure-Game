@@ -6,7 +6,7 @@ const Player = function()
     let maxHP = 5;
     let currentHP = 5;
     let rank = "Beginner";
-    let location = "Bad Place";
+    let location = null;
 
     const inventory = [];
 

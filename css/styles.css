@@ -13,7 +13,7 @@ html
 {
     border: none;
     color: white;
-    font-size: 1.25rem;
+    font-size: 0.85rem;
     background: transparent;
 }
 .textDiv
@@ -43,10 +43,6 @@ html
 .textDiv__message, .textDiv__response
 {
     margin-top: 0;
-}
-.textDiv__input
-{
-    font-weight: bold;
 }
 .sidebarDiv
 {

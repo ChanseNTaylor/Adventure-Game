@@ -10,6 +10,8 @@ const Game =
 
     init()
     {
+        this.player.setLocation(Game.map.startingRoom);
+
         this.ui.setTime(this.map.getTime());
         this.ui.setScore(this.player.getScore());
         this.ui.setMoves(this.player.getMoves());
