@@ -1,25 +1,24 @@
 "use strict";
-const Game =
+const Game = (function ()
 {
-    GAME_TITLE: "This Game Has No Title Yet",
-    GAME_SUBTITLE: "I'll come up with something good later.",
+    const GAME_TITLE = "This Game Has No Title Yet";
+    const GAME_SUBTITLE = "I'll come up with something good later.";
 
-    ui: new UI(),
-    map: new Map(),
-    player: new Player(),
+    const ui = new UI();
+    const map = new Map();
+    const player = new Player();
 
-    init()
-    {
-        this.player.setLocation(Game.map.startingRoom);
+    ui.setTime(map.getTime());
+    ui.setScore(player.getScore());
+    ui.setMoves(player.getMoves());
+    ui.setLocation(player.getLocation().name);
 
-        this.ui.setTime(this.map.getTime());
-        this.ui.setScore(this.player.getScore());
-        this.ui.setMoves(this.player.getMoves());
-        this.ui.setLocation(this.player.getLocation());
+    ui.addTitleText(GAME_TITLE);
+    ui.addSubtitleText(GAME_SUBTITLE);
 
-        this.ui.addTitleText(this.GAME_TITLE);
-        this.ui.addSubtitleText(this.GAME_SUBTITLE);
+    return {
+        UI: ui,
+        Map: map,
+        Player: player
     }
-};
-
-Game.init();
+})();

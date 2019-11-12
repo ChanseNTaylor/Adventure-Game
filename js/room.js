@@ -1,14 +1,22 @@
 "use strict";
 class Room
 {
-    constructor(name)
+    constructor(properties)
     {
-        this.items = [];
-        this.roomName = name;
+        this.west = null;
+        this.east = null;
+        this.south = null;
+        this.north = null;
+        this.visited = false;
+
+        this.items = properties["items"] || [];
+        this.characters = properties["characters"] || [];
+        this.name = properties["name"] || "Bad Room";
+        this.description = properties["description"] || "Bad place.";
     }
 
     getRoomName()
     {
-        return this.roomName;
+        return this.name;
     }
 }
