@@ -20,6 +20,7 @@ const UI = function()
             addResponseText(response);
 
             input.value = "";
+            Game.UpdateUI();
         }
     });
 
@@ -33,6 +34,11 @@ const UI = function()
 
             return responses[Math.floor(Math.random() * responses.length)];
         }
+        else if(userInput == "shout")
+        {
+            Game.Player.incrementMoves();
+            return "AAAAAAAARGH!";
+        }
 
         return `Command '${userInput}' not recognized`;
     };
@@ -43,6 +49,7 @@ const UI = function()
 
         newParagraph.appendChild(document.createTextNode(text));
         newParagraph.classList.add("textDiv__title");
+        newParagraph.classList.add("no-margin");
 
         textDiv.appendChild(newParagraph);
     };
@@ -67,6 +74,16 @@ const UI = function()
         textDiv.appendChild(newSpan);
     };
 
+    const addLocationText = text =>
+    {
+        const newSpan = document.createElement("SPAN");
+
+        newSpan.appendChild(document.createTextNode(text));
+        newSpan.classList.add("textDiv__location");
+
+        textDiv.appendChild(newSpan);
+    }
+
     const addResponseText = text =>
     {
         const newParagraph = document.createElement("P");
@@ -80,6 +97,7 @@ const UI = function()
     return {
         addTitleText: addTitleText,
         addSubtitleText: addSubtitleText,
+        addLocationText: addLocationText,
         setTime(num) { time.innerHTML = num },
         setScore(num) { score.innerHTML = num },
         setMoves(num) { moves.innerHTML = num },

@@ -7,12 +7,26 @@ class Room
         this.east = null;
         this.south = null;
         this.north = null;
-        this.visited = false;
-
         this.items = properties["items"] || [];
+        this.visited = properties["visited"] || false;
         this.characters = properties["characters"] || [];
-        this.name = properties["name"] || "Bad Room";
-        this.description = properties["description"] || "Bad place.";
+        this.name = properties["name"] || "The Bad Room";
+        this.description = properties["description"] || "You probably shouldn't be here...";
+    }
+
+    setVisitedToTrue()
+    {
+        this.visited = true;
+    }
+
+    setNorth(room)
+    {
+        this.north = room;
+    }
+
+    setSouth(room)
+    {
+        this.south = room;
     }
 
     getRoomName()

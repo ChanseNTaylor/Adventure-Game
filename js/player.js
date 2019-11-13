@@ -6,18 +6,18 @@ const Player = function()
     let maxHP = 5;
     let currentHP = 5;
     let rank = "Beginner";
-    let location = Room.startingRoom;
+    let location = Room.InnBedroom;
 
     const inventory = [];
 
     return {
+        incrementScore(num) { score += num; },
+        incrementMoves(num = 1) { moves += num; },
         // setters
-        setScore(num = 0) { score += num; },
-        setMoves(num = 0) { moves += num; },
         setCurrentHP(num = 0) { currentHP += num; },
         setMaxHP(num = maxHP) { maxHP += num; },
         setRank(newRank = rank) { rank = newRank; },
-        setLocation(place = location) { location = place; },
+        setLocation(place) { location = place; },
         // getters
         getScore() { return score; },
         getMoves() { return moves; },

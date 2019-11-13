@@ -9,7 +9,7 @@
     <body class="no-margin">
         <div class="wrapper">
             <header class="header">
-                <div class="header__top-row">
+                <div class="header__top-row is-flex">
                     <span>
                         Moves: <span class="header__moves"></span>
                     </span>
@@ -24,8 +24,8 @@
                     Location: <span class="header__location"></span>
                 </div>
             </header>
-            <main class="content center">
-                <div class="sidebarDiv">
+            <main class="content">
+                <div class="is-flex">
                     <div class="inventoryDiv">
                         <span>Inventory:</span>
                     </div>
@@ -35,7 +35,9 @@
                     </div>
                 </div>
                 <div class="textDiv"></div>
-                <label>><input type="text" class="input" autofocus/></label>
+                <label class="is-flex">
+                    ><input type="text" class="input" autofocus/>
+                </label>
             </main>
             <footer class="footer center-text">A game by Chanse Taylor</footer>
         </div>
