@@ -11,13 +11,11 @@ class Room
         this.visited = properties["visited"] || false;
         this.characters = properties["characters"] || [];
         this.name = properties["name"] || "The Bad Room";
-        this.description = properties["description"] || "You probably shouldn't be here...";
+        this._description = properties["description"] || "You probably shouldn't be here...";
     }
 
-    setVisitedToTrue()
-    {
-        this.visited = true;
-    }
+    set visited(bool) { this._visited = bool; };
+    set description(newDescription) { this._description = newDescription; }
 
     setNorth(room)
     {
@@ -32,5 +30,10 @@ class Room
     getRoomName()
     {
         return this.name;
+    }
+
+    get description()
+    {
+        return this._description;
     }
 }

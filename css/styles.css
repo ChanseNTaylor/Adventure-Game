@@ -36,13 +36,10 @@ html
     font-size: 1.5rem;
     font-weight: bold;
 }
-.textDiv__response
-{
-    white-space: pre-line;
-}
 .textDiv__message, .textDiv__response
 {
     margin-top: 0;
+    white-space: pre-line;
 }
 .inventoryDiv
 {

@@ -14,7 +14,7 @@ const UI = function()
     {
         if(evt.key == "Enter")
         {
-            const response = parseUserInput(input.value);
+            const response = Game.ParseUserInput(input.value);
 
             addInputText(`>${input.value}`);
             addResponseText(response);
@@ -23,25 +23,6 @@ const UI = function()
             Game.UpdateUI();
         }
     });
-
-    const parseUserInput = userInput =>
-    {
-        userInput = userInput.toLowerCase();
-
-        if(["hi", "hello", "hey", "howdy"].includes(userInput))
-        {
-            const responses = ["Hello.", "Goodbye.", "Howdy.", "Good day."];
-
-            return responses[Math.floor(Math.random() * responses.length)];
-        }
-        else if(userInput == "shout")
-        {
-            Game.Player.incrementMoves();
-            return "AAAAAAAARGH!";
-        }
-
-        return `Command '${userInput}' not recognized`;
-    };
 
     const addTitleText = text =>
     {

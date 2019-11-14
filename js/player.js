@@ -1,32 +1,32 @@
 "use strict";
-const Player = function()
+class Player
 {
-    let score = 0;
-    let moves = 0;
-    let maxHP = 5;
-    let currentHP = 5;
-    let rank = "Beginner";
-    let location = Room.InnBedroom;
-
-    const inventory = [];
-
-    return {
-        incrementScore(num) { score += num; },
-        incrementMoves(num = 1) { moves += num; },
-        // setters
-        setCurrentHP(num = 0) { currentHP += num; },
-        setMaxHP(num = maxHP) { maxHP += num; },
-        setRank(newRank = rank) { rank = newRank; },
-        setLocation(place) { location = place; },
-        // getters
-        getScore() { return score; },
-        getMoves() { return moves; },
-        getCurrentHP() { return currentHP; },
-        getMaxHP() { return maxHP; },
-        getRank() { return rank; },
-        getLocation() { return location; },
-        getInventory() { return inventory; },
-        // utility
-        addToInventory(item) { inventory.push(item); }
+    constructor()
+    {
+        this._score = 0;
+        this._moves = 0;
+        this._maxHP = 5;
+        this._currentHP = 5;
+        this._inventory = [];
+        this._location = null;
+        this._rank = "Beginner";
     }
+
+    incrementScore(num) { return score += num; };
+    incrementMoves(num = 1) { return this._moves += num; };
+
+    addToInventory(item) { this._inventory.push(item); }
+
+    set maxHP(num) { this._maxHP = num; };
+    set rank(newRank) { this._rank = newRank };
+    set currentHP(num) { this._currentHP = num; };
+    set location(newLocation) { this._location = newLocation; }
+
+    get rank() { return this._rank; };
+    get score() { return this._score; };
+    get moves() { return this._moves; };
+    get maxHP() { return this._maxHP; };
+    get location() { return this._location; };
+    get inventory() { return this._inventory; };
+    get currentHP() { return this._currentHP; };
 }
