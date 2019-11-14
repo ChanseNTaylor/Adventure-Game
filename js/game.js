@@ -42,7 +42,7 @@ const Game = (function()
             if(player.location.north)
             {
                 player.incrementMoves();
-                player.location =player.location.north;
+                player.location = player.location.north;
 
                 return `${player.location.name}
                 ${player.location.description}`;

@@ -12,7 +12,7 @@ class Player
         this._rank = "Beginner";
     }
 
-    incrementScore(num) { return score += num; };
+    incrementScore(num) { return this._score += num; };
     incrementMoves(num = 1) { return this._moves += num; };
 
     addToInventory(item) { this._inventory.push(item); }

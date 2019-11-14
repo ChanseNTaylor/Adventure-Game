@@ -3,37 +3,35 @@ class Room
 {
     constructor(properties)
     {
-        this.west = null;
-        this.east = null;
-        this.south = null;
-        this.north = null;
-        this.items = properties["items"] || [];
-        this.visited = properties["visited"] || false;
-        this.characters = properties["characters"] || [];
-        this.name = properties["name"] || "The Bad Room";
+        this._up = null;
+        this._down = null;
+        this._west = null;
+        this._east = null;
+        this._south = null;
+        this._north = null;
+        this._items = properties["items"] || [];
+        this._visited = properties["visited"] || false;
+        this._characters = properties["characters"] || [];
+        this._name = properties["name"] || "The Bad Room";
         this._description = properties["description"] || "You probably shouldn't be here...";
     }
 
+    set up(room) { this._up = room; };
+    set down(room) { this._down = room; };
+    set east(room) { this._east = room; };
+    set west(room) { this._west = room; };
+    set north(room) { this._north = room; };
+    set south(room) { this._south = room; };
     set visited(bool) { this._visited = bool; };
-    set description(newDescription) { this._description = newDescription; }
+    set description(description) { this._description = description; };
 
-    setNorth(room)
-    {
-        this.north = room;
-    }
-
-    setSouth(room)
-    {
-        this.south = room;
-    }
-
-    getRoomName()
-    {
-        return this.name;
-    }
-
-    get description()
-    {
-        return this._description;
-    }
+    get up() { return this._up; };
+    get down() { return this._down; };
+    get name() { return this._name; };
+    get west() { return this._west; };
+    get east() { return this._east; };
+    get north() { return this._north; };
+    get south() { return this._south; };
+    get visited() { return this._visited; };
+    get description() { return this._description; };
 }

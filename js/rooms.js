@@ -8,11 +8,30 @@ Room.InnBedroom = new Room(
 
 Room.InnHallway = new Room(
 {
-    visited: false,
     name: "Inn Hallway",
-    description: "You are in a hallway just outside of the bedroom that you rented for last night. There are other doors in the hallway, but they're probably locked or occupied."
+    description: "You are in a hallway just outside of the bedroom that you rented for last night. There are other doors in the hallway, but they're probably locked or occupied.  To the east, there is a door leading to a communal restroom."
 });
 
-Room.InnBedroom.setNorth(Room.InnHallway);
+Room.Tavern = new Room(
+{
+    name: "Inn Lobby",
+    description: "The ground floor of this Inn is a tavern.  A tavern that is considerably more empty than last night."
+});
 
-Room.InnHallway.setSouth(Room.InnBedroom);
+Room.TavernToilet = new Room(
+{
+    name: "Tavern Toilet",
+    description: "There doesn't appear to be anything of value here.  This is just a remarkably filth restroom."
+});
+
+
+// Bedroom
+Room.InnBedroom.north = Room.InnHallway;
+
+// Hallway
+Room.InnHallway.south = Room.InnBedroom;
+Room.InnHallway.down = Room.Tavern;
+
+// Tavern
+Room.Tavern.up = Room.InnHallway;
+Room.Tavern.west = Room.TavernToilet;
