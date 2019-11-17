@@ -3,6 +3,7 @@ Room.InnBedroom = new Room(
 {
     visited: true,
     name: "Inn Bedroom",
+    items: [Item.UnlitLantern, Item.ShortSword],
     description: "You are in a small bedroom with only a bed and a small nightstand. It feels a bit cramped when you aren't in its shoddy bed."
 });
 
@@ -24,6 +25,18 @@ Room.TavernToilet = new Room(
     description: "There doesn't appear to be anything of value here.  This is just a remarkably filth restroom."
 });
 
+Room.TavernBasement = new Room(
+{
+    name: "Tavern Basement",
+    description: "It is exceptionally dark down here, you'll need some sort of light source if "
+});
+
+Room.TownCenter = new Room(
+{
+    name: "Town Center",
+    description: "You are near the center of this small town."
+});
+
 
 // Bedroom
 Room.InnBedroom.north = Room.InnHallway;
@@ -35,3 +48,4 @@ Room.InnHallway.down = Room.Tavern;
 // Tavern
 Room.Tavern.up = Room.InnHallway;
 Room.Tavern.west = Room.TavernToilet;
+Room.Tavern.north = Room.TownCenter;

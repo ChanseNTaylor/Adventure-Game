@@ -1,8 +1,8 @@
 "use strict";
 const Game = (function()
 {
-    const GAME_TITLE = "This Game Has No Title Yet";
-    const GAME_SUBTITLE = "I'll come up with something good later.";
+    const GAME_TITLE = "Dragon Hunting";
+    const GAME_SUBTITLE = "You're on a quest to slay a dragon that has been terrorizing the countryside.";
 
     const ui = new UI();
     const map = new Map();

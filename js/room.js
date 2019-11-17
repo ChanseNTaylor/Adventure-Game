@@ -33,5 +33,21 @@ class Room
     get north() { return this._north; };
     get south() { return this._south; };
     get visited() { return this._visited; };
-    get description() { return this._description; };
+    get description()
+    {
+        if(this._items)
+        {
+            let itemStr = "";
+
+            for(let aa = 0; aa < this._items.length; ++aa)
+            {
+                itemStr += `${this._items[aa].initialDescription}\n`;
+            }
+
+            return `${this._description}\n
+            ${itemStr}`;
+        }
+
+        return this._description;
+    };
 }
