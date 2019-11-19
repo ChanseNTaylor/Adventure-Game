@@ -10,7 +10,7 @@ Room.InnBedroom = new Room(
 Room.InnHallway = new Room(
 {
     name: "Inn Hallway",
-    description: "You are in a hallway just outside of the bedroom that you rented for last night. There are other doors in the hallway, but they're probably locked or occupied.  To the east, there is a door leading to a communal restroom."
+    description: "You are in a hallway just outside of the bedroom that you rented for last night. There are other doors in the hallway, but they're probably locked or occupied."
 });
 
 Room.Tavern = new Room(

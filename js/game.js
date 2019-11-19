@@ -44,8 +44,15 @@ const Game = (function()
                 player.incrementMoves();
                 player.location = player.location.north;
 
-                return `${player.location.name}
-                ${player.location.description}`;
+                if(player.location.visited == false)
+                {
+                    player.location.visited = true;
+
+                    return `${player.location.name}
+                    ${player.location.description}`;
+                }
+
+                return player.location.name;
             }
 
             return "You cannot go that way";
@@ -57,8 +64,15 @@ const Game = (function()
                 player.incrementMoves();
                 player.location = player.location.south;
 
-                return `${player.location.name}
-                ${player.location.description}`;
+                if(player.location.visited == false)
+                {
+                    player.location.visited = true;
+
+                    return `${player.location.name}
+                    ${player.location.description}`;
+                }
+
+                return player.location.name;
             }
 
             return "You cannot go that way";
@@ -70,8 +84,15 @@ const Game = (function()
                 player.incrementMoves();
                 player.location = player.location.east;
 
-                return `${player.location.name}
-                ${player.location.description}`;
+                if(player.location.visited == false)
+                {
+                    player.location.visited = true;
+
+                    return `${player.location.name}
+                    ${player.location.description}`;
+                }
+
+                return player.location.name;
             }
 
             return "You cannot go that way";
@@ -83,8 +104,15 @@ const Game = (function()
                 player.incrementMoves();
                 player.location = player.location.west;
 
-                return `${player.location.name}
-                ${player.location.description}`;
+                if(player.location.visited == false)
+                {
+                    player.location.visited = true;
+
+                    return `${player.location.name}
+                    ${player.location.description}`;
+                }
+
+                return player.location.name;
             }
 
             return "You cannot go that way";
