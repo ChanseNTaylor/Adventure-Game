@@ -16,12 +16,6 @@ const Game = (function()
         ui.setLocation(player.location.name);
     }
 
-    const addTitleAndSubtitle = () =>
-    {
-        ui.addTitleText(GAME_TITLE);
-        ui.addSubtitleText(GAME_SUBTITLE);
-    }
-
     const parseUserInput = userInput =>
     {
         userInput = userInput.toLowerCase();
@@ -125,7 +119,8 @@ const Game = (function()
     player.location = Room.InnBedroom;
 
     updateUI();
-    addTitleAndSubtitle();
+    ui.addTitleText(GAME_TITLE);
+    ui.addSubtitleText(GAME_SUBTITLE);
 
     ui.addLocationText(player.location.name);
     ui.addSubtitleText(player.location.description);
