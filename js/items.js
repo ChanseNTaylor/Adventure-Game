@@ -18,3 +18,9 @@ Item.ShortSword = new Item(
     initialDescription: "Your sword is sheathed and leaning against the wall.  Be sure to remember to bring this with you!",
     itemDescription: "An ordinary short sword.  It hasn't seen as much use as the sword of more successful adventurers, but with this quest, you intend to change that."
 });
+
+Item.LeatherShield = new Item(
+{
+    name: "Leather Shield",
+    initialDescription: "Your sturdy shield.  Vital for novice and experienced adventurers alike."
+});
