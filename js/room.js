@@ -23,6 +23,7 @@ class Room
     set north(room) { this._north = room; };
     set south(room) { this._south = room; };
     set visited(bool) { this._visited = bool; };
+    set items(item) { this._items.push(item); };
     set description(description) { this._description = description; };
 
     get up() { return this._up; };
@@ -33,6 +34,7 @@ class Room
     get north() { return this._north; };
     get south() { return this._south; };
     get visited() { return this._visited; };
+    get items() { return this._items.map(item => item.name.toLowerCase()); };
     get description()
     {
         if(this._items)

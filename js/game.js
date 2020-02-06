@@ -18,13 +18,23 @@ const Game = (function()
 
     const parseUserInput = userInput =>
     {
-        userInput = userInput.toLowerCase();
+        let previousIsQuestion = false;
+        userInput = userInput.toLowerCase().trim();
+
+        if(!userInput)
+        {
+            return "What?";
+        }
 
         if(["hi", "hello", "hey", "howdy"].includes(userInput))
         {
             const responses = ["Hello.", "Goodbye.", "Howdy.", "Good day."];
 
             return responses[Math.floor(Math.random() * responses.length)];
+        }
+        else if(["look", "l"].includes(userInput))
+        {
+            return player.location.description;
         }
         else if(userInput == "shout")
         {
@@ -111,6 +121,22 @@ const Game = (function()
 
             return "You cannot go that way";
         }
+        else if(["take", "get"].includes(userInput))
+        {
+            previousIsQuestion = true;
+
+            return `What would you like to ${userInput}?`;
+        }
+
+        if(player.location.items.includes(userInput))
+        {
+            return "I can see that!";
+        }
+
+        if(userInput.includes(" "))
+        {
+            return "I see that space";
+        }
 
         return `Command '${userInput}' not recognized`;
     };
@@ -122,8 +148,8 @@ const Game = (function()
     ui.addTitleText(GAME_TITLE);
     ui.addSubtitleText(GAME_SUBTITLE);
 
-    ui.addLocationText(player.location.name);
-    ui.addSubtitleText(player.location.description);
+    ui.addLocationHead(player.location.name);
+    ui.addLocationBodyText(player.location.description);
 
     return {
         UI: ui,

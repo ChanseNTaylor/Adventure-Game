@@ -30,7 +30,6 @@ const UI = function()
 
         newParagraph.appendChild(document.createTextNode(text));
         newParagraph.classList.add("textDiv__title");
-        newParagraph.classList.add("no-margin");
 
         textDiv.appendChild(newParagraph);
     };
@@ -40,7 +39,7 @@ const UI = function()
         const newParagraph = document.createElement("P");
 
         newParagraph.appendChild(document.createTextNode(text));
-        newParagraph.classList.add("textDiv__message");
+        newParagraph.classList.add("textDiv__subtitle");
 
         textDiv.appendChild(newParagraph);
     };
@@ -55,7 +54,7 @@ const UI = function()
         textDiv.appendChild(newSpan);
     };
 
-    const addLocationText = text =>
+    const addLocationHead = text =>
     {
         const newSpan = document.createElement("SPAN");
 
@@ -64,6 +63,16 @@ const UI = function()
 
         textDiv.appendChild(newSpan);
     }
+
+    const addLocationBodyText = text =>
+    {
+        const newParagraph = document.createElement("P");
+
+        newParagraph.appendChild(document.createTextNode(text));
+        newParagraph.classList.add("textDiv__location-body");
+
+        textDiv.appendChild(newParagraph);
+    };
 
     const addResponseText = text =>
     {
@@ -78,7 +87,8 @@ const UI = function()
     return {
         addTitleText: addTitleText,
         addSubtitleText: addSubtitleText,
-        addLocationText: addLocationText,
+        addLocationHead: addLocationHead,
+        addLocationBodyText: addLocationBodyText,
         setTime(num) { time.innerHTML = num },
         setScore(num) { score.innerHTML = num },
         setMoves(num) { moves.innerHTML = num },

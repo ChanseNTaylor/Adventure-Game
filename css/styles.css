@@ -1,12 +1,19 @@
-*
+/* Resets */
+body, p
 {
-    box-sizing: border-box;
+    margin: 0;
+}
+
+*, *:before, *:after
+{
+    box-sizing: inherit;
 }
 html
 {
-    color: white;
-    font-size: 2.25vw;
     background-color: black;
+    box-sizing: border-box;
+    color: white;
+    font-size: 2.1vw;
     font-family: Courier New;
 }
 .wrapper
@@ -40,6 +47,18 @@ html
     font-size: 1.5rem;
     font-weight: bold;
 }
+.textDiv__subtitle
+{
+    margin-bottom: 0.75rem;
+}
+.textDiv__location
+{
+    font-weight: bold;
+}
+.textDiv__location-body
+{
+    white-space: pre-line;
+}
 .textDiv__message, .textDiv__response
 {
     margin-top: 0;
@@ -71,10 +90,6 @@ canvas
 }
 
 /* Generics */
-.center
-{
-    margin: 0 auto;
-}
 .is-flex
 {
     display: flex;
@@ -82,14 +97,6 @@ canvas
 .center-text
 {
     text-align: center;
-}
-.no-margin
-{
-    margin: 0;
-}
-.no-padding
-{
-    padding: 0;
 }
 
 /* Media Queries */
