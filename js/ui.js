@@ -14,10 +14,8 @@ const UI = function()
     {
         if(evt.key == "Enter")
         {
-            const response = Game.ParseUserInput(input.value);
-
             addInputText(`>${input.value}`);
-            addResponseText(response);
+            addResponseText(Game.ParseUserInput(input.value));
 
             input.value = "";
             Game.UpdateUI();
@@ -46,7 +44,7 @@ const UI = function()
 
     const addInputText = text =>
     {
-        const newSpan = document.createElement("SPAN");
+        const newSpan = document.createElement("P");
 
         newSpan.appendChild(document.createTextNode(text));
         newSpan.classList.add("textDiv__input");
@@ -96,4 +94,4 @@ const UI = function()
     }
 }
 
-// addResponseText and addSubtitleText are basically the same thing... Must fix.
+// The only difference between a lot of these is the element and class...

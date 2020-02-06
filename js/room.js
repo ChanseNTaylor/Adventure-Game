@@ -16,6 +16,14 @@ class Room
         this._description = properties["description"] || "You probably shouldn't be here...";
     }
 
+    getItemNames()
+    {
+        return this._items.map(item => item.name.toLowerCase());
+    };
+
+    addItem(item) { this._items.push(item); };
+    removeItemAt(index) { this._items.splice(index, 1); };
+
     set up(room) { this._up = room; };
     set down(room) { this._down = room; };
     set east(room) { this._east = room; };
@@ -23,7 +31,6 @@ class Room
     set north(room) { this._north = room; };
     set south(room) { this._south = room; };
     set visited(bool) { this._visited = bool; };
-    set items(item) { this._items.push(item); };
     set description(description) { this._description = description; };
 
     get up() { return this._up; };
@@ -31,10 +38,10 @@ class Room
     get name() { return this._name; };
     get west() { return this._west; };
     get east() { return this._east; };
+    get items() { return this._items};
     get north() { return this._north; };
     get south() { return this._south; };
     get visited() { return this._visited; };
-    get items() { return this._items.map(item => item.name.toLowerCase()); };
     get description()
     {
         if(this._items)

@@ -10,6 +10,11 @@ class Character
     }
 
     addToInventory(item) { this._inventory.push(item); };
+    
+    getInventoryItemNames()
+    {
+        return this._inventory.map(item => item.name.toLowerCase());
+    }
 
     set maxHP(num) { this._maxHP = num; };
     set currentHP(num) { this._currentHP = num; };

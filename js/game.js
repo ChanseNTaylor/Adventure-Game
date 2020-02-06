@@ -18,15 +18,26 @@ const Game = (function()
 
     const parseUserInput = userInput =>
     {
-        let previousIsQuestion = false;
         userInput = userInput.toLowerCase().trim();
+
+        let previousIsQuestion = false;
+
+        player.addToPreviousMoves(userInput);
 
         if(!userInput)
         {
             return "What?";
         }
+        else if(["i", "inv", "inven", "inventory"].includes(userInput))
+        {
+            if(player.inventory.length == 0)
+            {
+                return "You are not carrying anything right now.";
+            }
 
-        if(["hi", "hello", "hey", "howdy"].includes(userInput))
+            return player.getInventoryItemNames();
+        }
+        else if(["hi", "hello", "hey", "howdy"].includes(userInput))
         {
             const responses = ["Hello.", "Goodbye.", "Howdy.", "Good day."];
 
@@ -39,6 +50,7 @@ const Game = (function()
         else if(userInput == "shout")
         {
             player.incrementMoves();
+
             return "AAAAAAAARGH!";
         }
         else if(["north", "n"].includes(userInput))
@@ -52,8 +64,9 @@ const Game = (function()
                 {
                     player.location.visited = true;
 
-                    return `${player.location.name}
-                    ${player.location.description}`;
+                    ui.addLocationHead(player.location.name);
+
+                    return `${player.location.description}`;
                 }
 
                 return player.location.name;
@@ -121,16 +134,39 @@ const Game = (function()
 
             return "You cannot go that way";
         }
-        else if(["take", "get"].includes(userInput))
+        else if(["take", "get", "drop"].includes(userInput))
         {
-            previousIsQuestion = true;
-
             return `What would you like to ${userInput}?`;
         }
 
-        if(player.location.items.includes(userInput))
+        if(player.location.getItemNames().includes(userInput))
         {
+            const index = player.location.getItemNames().indexOf(userInput);
+
+            if(player.previousMoves[1] == "take")
+            {
+                player.addToInventory(player.location.items[index]);
+                player.location.removeItemAt(index);
+
+                return `The ${userInput} has been taken.`;
+            }
+
             return "I can see that!";
+        }
+
+        if(player.getInventoryItemNames().includes(userInput))
+        {
+            const index = player.getInventoryItemNames().indexOf(userInput);
+
+            console.log(index, player.previousMoves)
+
+            if(player.previousMoves[1] == "drop")
+            {
+                player.location.addItem(player.inventory[index]);
+                player.removeFromInventory(player.inventory);
+
+                return `The ${userInput} was left behind.`;
+            }
         }
 
         if(userInput.includes(" "))
@@ -159,3 +195,5 @@ const Game = (function()
         ParseUserInput: parseUserInput
     }
 })();
+
+// complete the remove from inventory function for the character class
