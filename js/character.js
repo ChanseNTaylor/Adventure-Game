@@ -10,7 +10,7 @@ class Character
     }
 
     addToInventory(item) { this._inventory.push(item); };
-    
+
     getInventoryItemNames()
     {
         return this._inventory.map(item => item.name.toLowerCase());

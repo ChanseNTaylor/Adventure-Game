@@ -21,15 +21,15 @@ html
     color: white;
     font-size: 2.1vw;
     font-family: Courier New;
-    padding: 1rem;
     height: 100vh;
+    padding: 1rem;
 }
 .input
 {
     background: none;
     border: none;
     color: white;
-    font-size: 0.85rem;
+    font-size: 1rem;
 }
 .textDiv
 {
@@ -38,7 +38,7 @@ html
 }
 .footer
 {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     padding-top: 0.5rem;
     border-top: 1px dotted white;
 }
@@ -53,7 +53,7 @@ html
 }
 .textDiv__subtitle
 {
-    margin-bottom: 0.75rem;
+    margin-bottom: 1.5rem;
 }
 .textDiv__location
 {
@@ -64,28 +64,9 @@ html
     margin-bottom: 0.75rem;
     white-space: pre-line;
 }
-.textDiv__message, .textDiv__response
+.textDiv__message
 {
-    margin-top: 0;
     white-space: pre-line;
-}
-.inventoryDiv
-{
-    flex: 1 1 auto;
-}
-.inventoryItem
-{
-    width: 100%;
-    margin: 3px 0;
-    display: inline-block;
-    background-color: rgba(100, 100, 100, 0.5);
-}
-.inventoryItem:hover
-{
-    width: 100%;
-    margin: 3px 0;
-    display: inline-block;
-    background-color: rgba(100, 100, 100, 0.85);
 }
 canvas
 {

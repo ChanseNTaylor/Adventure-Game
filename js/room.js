@@ -16,10 +16,7 @@ class Room
         this._description = properties["description"] || "You probably shouldn't be here...";
     }
 
-    getItemNames()
-    {
-        return this._items.map(item => item.name.toLowerCase());
-    };
+    getItemNames() { return this._items.map(item => item.name.toLowerCase()); };
 
     addItem(item) { this._items.push(item); };
     removeItemAt(index) { this._items.splice(index, 1); };

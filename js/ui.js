@@ -12,86 +12,36 @@ const UI = function()
 
     input.addEventListener("keydown", evt =>
     {
+        const userInput = evt.target.value;
+
         if(evt.key == "Enter")
         {
-            addInputText(`>${input.value}`);
-            addResponseText(Game.ParseUserInput(input.value));
+            addTextElement(".textDiv__message", `>${userInput}`);
+            addTextElement("textDiv__message", Game.ParseUserInput(userInput));
 
-            input.value = "";
+            clearInputField();
             Game.UpdateUI();
         }
     });
 
-    const addTitleText = text =>
+    const clearInputField = () => { input.value = ""; };
+
+    const addTextElement = (className, text) =>
     {
         const newParagraph = document.createElement("P");
 
         newParagraph.appendChild(document.createTextNode(text));
-        newParagraph.classList.add("textDiv__title");
-
-        textDiv.appendChild(newParagraph);
-    };
-
-    const addSubtitleText = text =>
-    {
-        const newParagraph = document.createElement("P");
-
-        newParagraph.appendChild(document.createTextNode(text));
-        newParagraph.classList.add("textDiv__subtitle");
-
-        textDiv.appendChild(newParagraph);
-    };
-
-    const addInputText = text =>
-    {
-        const newSpan = document.createElement("P");
-
-        newSpan.appendChild(document.createTextNode(text));
-        newSpan.classList.add("textDiv__input");
-
-        textDiv.appendChild(newSpan);
-    };
-
-    const addLocationHead = text =>
-    {
-        const newSpan = document.createElement("SPAN");
-
-        newSpan.appendChild(document.createTextNode(text));
-        newSpan.classList.add("textDiv__location");
-
-        textDiv.appendChild(newSpan);
-    }
-
-    const addLocationBodyText = text =>
-    {
-        const newParagraph = document.createElement("P");
-
-        newParagraph.appendChild(document.createTextNode(text));
-        newParagraph.classList.add("textDiv__location-body");
-
-        textDiv.appendChild(newParagraph);
-    };
-
-    const addResponseText = text =>
-    {
-        const newParagraph = document.createElement("P");
-
-        newParagraph.appendChild(document.createTextNode(text));
-        newParagraph.classList.add("textDiv__message");
+        newParagraph.classList.add(className);
 
         textDiv.appendChild(newParagraph);
     };
 
     return {
-        addTitleText: addTitleText,
-        addSubtitleText: addSubtitleText,
-        addLocationHead: addLocationHead,
-        addLocationBodyText: addLocationBodyText,
+        addTextElement: addTextElement,
+        clearInputField: clearInputField,
         setTime(num) { time.innerHTML = num },
         setScore(num) { score.innerHTML = num },
         setMoves(num) { moves.innerHTML = num },
         setLocation(place) { location.innerHTML = place }
     }
 }
-
-// The only difference between a lot of these is the element and class...

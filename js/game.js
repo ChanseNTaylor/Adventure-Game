@@ -3,6 +3,10 @@ const Game = (function()
 {
     const GAME_TITLE = "Dragon Hunting";
     const GAME_SUBTITLE = "You're on a quest to slay a dragon that has been terrorizing the countryside.";
+    const HELP_TEXT = "";
+    const SCORE_TEXT = "";
+    const TIME_TEXT = `You have been playing ${GAME_TITLE} for longer than you think.`;
+    const INFO_TEXT = "A dragon has been destroying farming villages just outside the reach of the king's army for sometime now. King has put a bounty on the head of the dragon. You are one of the many would be dragonslayers. Hopefully, you do not meet the same fate as the knights and adventurers before you...";
 
     const ui = new UI();
     const map = new Map();
@@ -18,18 +22,52 @@ const Game = (function()
 
     const parseUserInput = userInput =>
     {
-        userInput = userInput.toLowerCase().trim();
-
         let previousIsQuestion = false;
+
+        userInput = userInput.toLowerCase().trim();
 
         player.addToPreviousMoves(userInput);
 
         if(!userInput)
         {
-            return "What?";
+            return "I beg your pardon?";
+        }
+        else if(userInput == "help")
+        {
+            player.incrementMoves();
+
+            return HELP_TEXT;
+        }
+        else if(userInput == "score")
+        {
+            player.incrementMoves();
+
+            return SCORE_TEXT;
+        }
+        else if(userInput == "time")
+        {
+            return TIME_TEXT;
+        }
+        else if(userInput == "info")
+        {
+            player.incrementMoves();
+
+            return INFO_TEXT;
+        }
+        else if(userInput == "wait")
+        {
+            player.incrementMoves();
+
+            return "Some time passes.";
+        }
+        else if(userInput == "diagnose")
+        {
+            return player.currentHP;
         }
         else if(["i", "inv", "inven", "inventory"].includes(userInput))
         {
+            player.incrementMoves();
+
             if(player.inventory.length == 0)
             {
                 return "You are not carrying anything right now.";
@@ -41,10 +79,14 @@ const Game = (function()
         {
             const responses = ["Hello.", "Goodbye.", "Howdy.", "Good day."];
 
+            player.incrementMoves();
+
             return responses[Math.floor(Math.random() * responses.length)];
         }
         else if(["look", "l"].includes(userInput))
         {
+            player.incrementMoves();
+
             return player.location.description;
         }
         else if(userInput == "shout")
@@ -64,9 +106,9 @@ const Game = (function()
                 {
                     player.location.visited = true;
 
-                    ui.addLocationHead(player.location.name);
+                    ui.addTextElement("textDiv__location", player.location.name);
 
-                    return `${player.location.description}`;
+                    return player.location.description;
                 }
 
                 return player.location.name;
@@ -85,8 +127,9 @@ const Game = (function()
                 {
                     player.location.visited = true;
 
-                    return `${player.location.name}
-                    ${player.location.description}`;
+                    ui.addTextElement("textDiv__location", player.location.name);
+
+                    return player.location.description;
                 }
 
                 return player.location.name;
@@ -181,11 +224,13 @@ const Game = (function()
     player.location = Room.InnBedroom;
 
     updateUI();
-    ui.addTitleText(GAME_TITLE);
-    ui.addSubtitleText(GAME_SUBTITLE);
+    ui.addTextElement("textDiv__title", GAME_TITLE);
+    ui.addTextElement("textDiv__subtitle", GAME_SUBTITLE);
 
-    ui.addLocationHead(player.location.name);
-    ui.addLocationBodyText(player.location.description);
+    ui.addTextElement("textDiv__location", player.location.name);
+    ui.addTextElement("textDiv__location-body", player.location.description);
+
+    ui.clearInputField();
 
     return {
         UI: ui,
