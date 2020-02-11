@@ -16,6 +16,11 @@ class Character
         return this._inventory.map(item => item.name.toLowerCase());
     }
 
+    getInventoryItemShortNames()
+    {
+        return this._inventory.map(item => item.shortName.toLowerCase());
+    }
+
     set maxHP(num) { this._maxHP = num; };
     set currentHP(num) { this._currentHP = num; };
     set location(newLocation) { this._location = newLocation; };

@@ -177,7 +177,7 @@ const Game = (function()
 
             return "You cannot go that way";
         }
-        else if(["take", "get", "drop"].includes(userInput))
+        else if(["take", "get", "drop", "attack"].includes(userInput))
         {
             return `What would you like to ${userInput}?`;
         }
