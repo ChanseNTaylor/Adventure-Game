@@ -24,6 +24,29 @@ const Game = (function()
     {
         let previousIsQuestion = false;
 
+        const randomIndex = arr => arr[Math.floor(Math.random() * arr.length)];
+        const move = direction =>
+        {
+            if(player.location[direction])
+            {
+                player.incrementMoves();
+                player.location = player.location[direction];
+
+                if(player.location.visited == false)
+                {
+                    player.location.visited = true;
+
+                    ui.addTextElement("textDiv__location", player.location.name);
+
+                    return player.location.description;
+                }
+
+                return player.location.name;
+            }
+
+            return "You cannot go that way";
+        }
+
         userInput = userInput.toLowerCase().trim();
 
         player.addToPreviousMoves(userInput);
@@ -64,6 +87,10 @@ const Game = (function()
         {
             return player.currentHP;
         }
+        else if(userInput == "go")
+        {
+            return "Where would you like to go?";
+        }
         else if(["i", "inv", "inven", "inventory"].includes(userInput))
         {
             player.incrementMoves();
@@ -77,11 +104,9 @@ const Game = (function()
         }
         else if(["hi", "hello", "hey", "howdy"].includes(userInput))
         {
-            const responses = ["Hello.", "Goodbye.", "Howdy.", "Good day."];
-
             player.incrementMoves();
 
-            return responses[Math.floor(Math.random() * responses.length)];
+            return randomIndex(["Hello.", "Goodbye.", "Howdy.", "Good day."]);
         }
         else if(["look", "l"].includes(userInput))
         {
@@ -95,87 +120,29 @@ const Game = (function()
 
             return "AAAAAAAARGH!";
         }
+        else if(["down", "d"].includes(userInput))
+        {
+            return move("down");
+        }
+        else if(["up", "u"].includes(userInput))
+        {
+            return move("up");
+        }
         else if(["north", "n"].includes(userInput))
         {
-            if(player.location.north)
-            {
-                player.incrementMoves();
-                player.location = player.location.north;
-
-                if(player.location.visited == false)
-                {
-                    player.location.visited = true;
-
-                    ui.addTextElement("textDiv__location", player.location.name);
-
-                    return player.location.description;
-                }
-
-                return player.location.name;
-            }
-
-            return "You cannot go that way";
+            return move("north")
         }
         else if(["south", "s"].includes(userInput))
         {
-            if(player.location.south)
-            {
-                player.incrementMoves();
-                player.location = player.location.south;
-
-                if(player.location.visited == false)
-                {
-                    player.location.visited = true;
-
-                    ui.addTextElement("textDiv__location", player.location.name);
-
-                    return player.location.description;
-                }
-
-                return player.location.name;
-            }
-
-            return "You cannot go that way";
+            return move("south");
         }
         else if(["east", "e"].includes(userInput))
         {
-            if(player.location.east)
-            {
-                player.incrementMoves();
-                player.location = player.location.east;
-
-                if(player.location.visited == false)
-                {
-                    player.location.visited = true;
-
-                    return `${player.location.name}
-                    ${player.location.description}`;
-                }
-
-                return player.location.name;
-            }
-
-            return "You cannot go that way";
+            return move("east");
         }
         else if(["west", "w"].includes(userInput))
         {
-            if(player.location.west)
-            {
-                player.incrementMoves();
-                player.location = player.location.west;
-
-                if(player.location.visited == false)
-                {
-                    player.location.visited = true;
-
-                    return `${player.location.name}
-                    ${player.location.description}`;
-                }
-
-                return player.location.name;
-            }
-
-            return "You cannot go that way";
+            return move("west");
         }
         else if(["take", "get", "drop", "attack"].includes(userInput))
         {
@@ -201,8 +168,6 @@ const Game = (function()
         {
             const index = player.getInventoryItemNames().indexOf(userInput);
 
-            console.log(index, player.previousMoves)
-
             if(player.previousMoves[1] == "drop")
             {
                 player.location.addItem(player.inventory[index]);
@@ -212,9 +177,18 @@ const Game = (function()
             }
         }
 
+        // needs work
         if(userInput.includes(" "))
         {
-            return "I see that space";
+            for(let aa = 0; aa < userInput.split(" ").length; aa++)
+            {
+                if(aa == userInput.split(" ").length - 1)
+                {
+                    return `${parseUserInput(userInput.split(" ")[aa])}`;
+                }
+
+                parseUserInput(userInput.split(" ")[aa]);
+            }
         }
 
         return `Command '${userInput}' not recognized`;
